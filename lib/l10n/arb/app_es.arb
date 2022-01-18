@@ -3,5 +3,13 @@
     "counterAppBarTitle": "Contador",
     "@counterAppBarTitle": {
         "description": "Texto mostrado en la AppBar de la página del contador"
+    },
+    "categories": "Categorías",
+    "@categories": {
+        "description": "Item de la barra de navegación del dashboard"
+    },
+    "users": "Usuarios",
+    "@users": {
+        "description": "Item de la barra de navegación del dashboard"
     }
 }

@@ -3,5 +3,13 @@
     "counterAppBarTitle": "Counter",
     "@counterAppBarTitle": {
         "description": "Text shown in the AppBar of the Counter Page"
+    },
+    "categories": "Categories",
+    "@categories": {
+        "description": "Navigation bar's item of dashboard"
+    },
+    "users": "Users",
+    "@users": {
+        "description": "Navigation bar's item of dashboard"
     }
 }

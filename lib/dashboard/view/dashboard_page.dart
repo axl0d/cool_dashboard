@@ -1,3 +1,4 @@
+import 'package:cool_dashboard/dashboard/widgets/side_menu.dart';
 import 'package:cool_dashboard/layout/responsive_layout_builder.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,7 @@ class DashboardPage extends StatelessWidget {
         ),
         large: (_, __) => Row(
           children: const [
-            Drawer(),
+            SideMenu(),
             Expanded(
               child: Scaffold(
                 body: Center(
