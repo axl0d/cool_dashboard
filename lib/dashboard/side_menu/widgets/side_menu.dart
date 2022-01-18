@@ -1,7 +1,7 @@
+import 'package:cool_dashboard/dashboard/side_menu/cubit/side_menu_cubit.dart';
 import 'package:cool_dashboard/l10n/l10n.dart';
 import 'package:flutter/material.dart';
-
-enum OverviewItem { categories, users }
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({Key? key}) : super(key: key);
@@ -55,14 +55,19 @@ class SideMenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final selected = context.select((SideMenuCubit cubit) => cubit.state.item);
+    final isSelected = selected == item;
     return Card(
+      elevation: 2,
       clipBehavior: Clip.antiAlias,
+      color: isSelected ? const Color(0xFF13B9FF) : null,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(8)),
-        side: BorderSide(color: Color(0xFF13B9FF)),
       ),
       child: ListTile(
-        onTap: () {},
+        selectedColor: Colors.white,
+        selected: isSelected,
+        onTap: () => context.read<SideMenuCubit>().setItem(item),
         leading: icon,
         title: Text(title),
       ),
