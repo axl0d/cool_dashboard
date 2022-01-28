@@ -131,3 +131,4 @@ app.*.map.json
 .github/
 android/
 ios/
+linux/

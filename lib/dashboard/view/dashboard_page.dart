@@ -9,33 +9,51 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: ResponsiveLayoutBuilder(
-        small: (_, __) => const Scaffold(
-          body: Center(
-            child: Text('hello small'),
+      child: BlocProvider(
+        create: (_) => SideMenuCubit(),
+        child: ResponsiveLayoutBuilder(
+          small: (_, __) => Scaffold(
+            appBar: AppBar(),
+            drawer: const SideMenu(),
+            body: const DashboardView(),
           ),
-        ),
-        medium: (_, __) => const Scaffold(
-          body: Center(
-            child: Text('hello medium'),
+          medium: (_, __) => const Scaffold(
+            body: DashboardView(),
           ),
-        ),
-        large: (_, __) => BlocProvider(
-          create: (context) => SideMenuCubit(),
-          child: Row(
+          large: (_, __) => Row(
             children: const [
               SideMenu(),
               Expanded(
                 child: Scaffold(
-                  body: Center(
-                    child: Text('hello large'),
-                  ),
+                  body: DashboardView(),
                 ),
               )
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class DashboardView extends StatelessWidget {
+  const DashboardView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SideMenuCubit, SideMenuState>(
+      builder: (context, state) {
+        switch (state.item) {
+          case OverviewItem.categories:
+            return const Center(
+              child: Text('categories'),
+            );
+          case OverviewItem.users:
+            return const Center(
+              child: Text('users'),
+            );
+        }
+      },
     );
   }
 }
